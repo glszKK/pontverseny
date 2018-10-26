@@ -1,99 +1,68 @@
 #include "std_lib_facilities.h"
 
-const double m=100,in=2.54,ft=12;
+int main(){
 
-void rendezes(vector<double> &szamok)
-{
-vector<double> rendezett;
-double rendez=0;
-for(int i=0;i<=szamok.size()-1;i++)
-{
-	for(int k=0;k<szamok.size();k++)
+	// 1. drill
+	cout<<"Enter the name of the person you want to write to:\n";
+	String first_name;
+	cin >> first_name;
+	cout<<"Dear "<< first_name <<",\n";
+
+	//2. drill kinda
+	cout<<"How are you? I am fine. I miss you. \n";
+
+
+	//3. drill
+	String friend_name;
+	cout<<"Tell me someone from our friend group:\n";
+	cin>> friend_name;
+	cout<<"Have you seen "<<friend_name<<" lately?\n";
+
+	//4. drill
+	char friend_sex;
+	cout<<"Could you tell me "<<friend_name<<"'s sex? If male write \"m\", if female write \"f\" : \n";
+	cin>>friend_sex;
+	if( friend_sex == 'f')
 	{
-		if(szamok[i]<szamok[k])
-		{
-			rendez=szamok[i];
-			szamok[i]=szamok[k];
-			szamok[k]=rendez;
-		}
+		cout<<"If you see "<<friend_name<<" please ask her to call me!\n";
 	}
-}
-
-}
-
-
-
-
-int main()
-{	double max=0,min=0,szum=0;
-	vector<double> szamok;
-	double szam1;
-	string mt="";
-	int mtsz,counter=0;
-
-
-
-
-	while(!cin.fail())
+	if( friend_sex == 'm')
 	{
-		double kul=1.0/100;
-		cout<<"Add meg a szamot,mertekegyseget[0-cm,1-m,2-in,3-ft]:";
-		cin>>szam1>>mt;
-
-
-
-		if(mt=="cm")
-			{mtsz=0;}
-		else if(mt=="m")
-			{mtsz=1;}
-		else if(mt=="in")
-			{mtsz=2;}
-		else if(mt=="ft")
-			{mtsz=3;}
-
-
-		switch(mtsz)
-		{
-			case 0:szam1=szam1/m; break;
-			case 1:szam1=szam1; break;
-			case 2:szam1=(szam1*in)/m; break;
-			case 3:szam1=(szam1*(ft*in))/m; break;
-			default: cout<<"Hibás mértékegység!"<<endl;
-		}
-
-
-		szum+=szam1;
-		szamok.push_back(szam1);
-
+		cout<<"If you see "<<friend_name<<" please ask him to call me!\n";
 	}
 
+	//5. drill
+	cout<<"How old are you ?\n";
+	int age;
+	cin>>age;
 
-	szamok.erase(szamok.begin()+(szamok.size()-1));
-	max=szamok[0];
-	min=szamok[0];
-
-
-	for(int i=1;i<szamok.size();i++)
+	if( age > 110 || age < 0)
 	{
-		if(szamok[i]>max)
-			{max=szamok[i];}
-		if(szamok[i]<min)
-			{min=szamok[i];}
+		simple_error("You're kidding!\n");
+	}
+	else
+	{
+		cout<<"I hear you just had a birthday and you are "<<age<<" years old!\n";
 	}
 
+	// kiegeszites
+
+	if(age < 12 )
+	{
+		cout<<"Next year you will be "<<age++<<"\n";
+	}
+	if( age == 17)
+	{
+		cout<<"Next year you will be able to vote\n";
+	}
+	if( age > 70 )
+	{
+		cout<<"I hope you are enjoying retirement.\n";
+	}
+
+	cout<<"Yours sincerely,  Patrik!\n";
 
 
-	counter=szamok.size();
-	cout<<"The largerst number: "<<max<<" the smallest number: "<<min<<endl;
-	cout<<"osszeg="<<szum<<"m"<<endl;
-	cout<<"Elemek szama:"<<counter<<endl;
-
-	rendezes(szamok);
-	for(unsigned int k=0;k<szamok.size();k++)
-		{cout<<szamok[k]<<"m"<<endl;}
 
 
-
-return 0;
 }
-
